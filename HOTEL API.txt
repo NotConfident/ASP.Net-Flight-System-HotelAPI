@@ -13,7 +13,7 @@ curl --request POST \
 
 COMMAND TO REQ API KEY (ON Windows Command Prompt)
 
-curl -H "Content-Type: application/json" -X POST https://api.makcorps.com/auth -d "{\"[Enter Username]\":\"YT7\", \"password\":\"[Enter Password]\"}"
+curl -H "Content-Type: application/json" -X POST https://api.makcorps.com/auth -d "{\"username\":\"[Enter Username]\", \"password\":\"[Enter Password]\"}"
 
 
 
