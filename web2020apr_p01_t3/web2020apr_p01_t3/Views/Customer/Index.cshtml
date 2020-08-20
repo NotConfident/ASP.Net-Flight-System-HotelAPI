@@ -1,0 +1,50 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lion City Airlines</title>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="~/css/homepage.css">
+    @section Styles {
+        <link href="@Url.Content("~/css/profile.css")" rel="stylesheet" type="text/css" />
+
+    }
+
+</head>
+
+@if (Context.Session.GetString("Role") != "Administrator")
+{
+    <body>
+        <div class="hero-image container-fluid">
+            <div class="row hero-row">
+                <div class="col vcenter">
+                    <div class="page-title">
+                        <h1>Lion City<br /> Airlines</h1>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div>
+                <partial name="~/Views/Schedule/_searchSchedule.cshtml" />
+            </div>
+
+        </div>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    </body>
+
+}
+else
+{
+    <partial name="~/Views/AdminActions/Index.cshtml" model="@Model" />
+}
+</html>

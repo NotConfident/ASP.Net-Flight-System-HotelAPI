@@ -1,0 +1,42 @@
+WEBSITE TO REGISTER FOR A NEW ACCOUNT (IF CURRENT ACCOUNT HAVE REQUESTED FOR A NEW API
+KEY TOO MANY TIMES): https://www.makcorps.com/register.html
+
+
+COMMAND TO REQ API KEY (ON macOS Terminal)
+curl --request POST \
+         --url 'https://api.makcorps.com/auth' \
+         --header 'Content-Type: application/json' \
+         --data '{
+              "username":"[Enter Username]",
+              "password":"[Enter Password]"
+      }'
+
+COMMAND TO REQ API KEY (ON Windows Command Prompt)
+
+curl -H "Content-Type: application/json" -X POST https://api.makcorps.com/auth -d "{\"[Enter Username]\":\"YT7\", \"password\":\"[Enter Password]\"}"
+
+
+
+COPY THE OUTPUT REQUEST TOKEN TO HOMECONTROLLER
+
+
+
+BREAKPOINT AT if(response.IsSuccessStatusCode) IF NEEDED TO CHECK THE RETURN MESSAGE:
+-- OK: Works as normal
+-- TOO MANY REQUEST: Server busy, Prioritization to paid users / Too many requests on the same IP
+-- NOT FOUND: Refresh API Key as above.
+-- UNAUTHORIZED: Refresh API Key OR A new account is needed. Current account has hit maximum limit for the month...
+
+
+
+
+COMMAND TO REQUEST FOR HOTELS (ON macOS Terminal)
+curl --request GET \
+          --url https://api.makcorps.com/free/singapore \
+          --header 'Authorization: JWT [Insert API Key here]'
+
+
+
+
+COMMAND TO REQUEST FOR HOTELS (ON Windows Command Prompt)
+curl -G GET https://api.makcorps.com/free/singapore -H "Authorization: JWT [Insert API Key here]"

@@ -1,0 +1,10 @@
+﻿@model IEnumerable<web2020apr_p01_t3.Models.FlightScheduleViewModel>
+
+@{
+    ViewData["Title"] = "View Flight Schedule";
+}
+
+<h4 class="PageTitle">View Flight Bookings</h4>
+<!-- Add a partial view to display a list of staff records
+ in a tabular format. -->
+<partial name="~/Views/AdminActions/ViewFlightBooking.cshtml" model="@Model" />

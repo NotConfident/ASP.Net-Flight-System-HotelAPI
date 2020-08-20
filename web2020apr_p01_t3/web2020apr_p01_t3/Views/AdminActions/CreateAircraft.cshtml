@@ -1,0 +1,65 @@
+﻿@model web2020apr_p01_t3.Models.Aircraft
+
+@{
+    ViewData["Title"] = "CreateAircraft";
+}
+<link rel="stylesheet" href="~/css/schedulebookingmain.css" />
+<div class="wrap-contact100">
+
+    <h4 class="PageTitle"> Create new Aircraft record</h4>
+    <hr />
+    <form asp-action="Create">
+        <fieldset class="FormContent">
+            <div class="form-group row">
+                <label asp-for="modelName"
+                       class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9 col-md-5">
+                    <input asp-for="modelName" class="form-control" />
+                    <span asp-validation-for="modelName"
+                          class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="noOfEconSeats"
+                       class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9 col-md-5">
+                    <input asp-for="noOfEconSeats" class="form-control" />
+                    <span asp-validation-for="noOfEconSeats"
+                          class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="noOfBusiSeats"
+                       class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9 col-md-5">
+                    <input asp-for="noOfBusiSeats" class="form-control" />
+                    <span asp-validation-for="noOfBusiSeats"
+                          class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="lastMaintain"
+                       class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9 col-md-5">
+                    <input asp-for="lastMaintain" class="form-control" />
+                    <span asp-validation-for="lastMaintain"
+                          class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-9 offset-sm-3">
+                    <input type="submit" value="Create"
+                           class="btn btn-primary" />
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+    
+</div>
+<br />
+<br />
+
+<div>
+    <a style="color:black; border-style:solid; border-radius:5px; padding:10px;" asp-controller="AdminActions" asp-action="ViewAircraft">Back to List</a>
+</div>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<web2020apr_p01_t3.Models.AircraftViewModel>
+<link rel="stylesheet" href="~/css/table.css" />
+
+@if (Model.ToList().Count > 0)
+{
+    <div id="table-padding">
+
+        <div class="table-responsive">
+            <table id="viewAircraft" class="rwd-table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Schedule ID</th>
+                        <th>Flight Number</th>
+                        <th>Departure Date & Time</th>
+                        <th>Arrival Date & Time</th>
+                        <th>Aircraft ID</th>
+                        <th>Aircraft Model</th>
+                        <th>Status</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ScheduleID.ToString()</td>
+                            <td>@item.FlightNumber</td>
+                            <td>@item.DepartureDateTime.ToString()</td>
+                            <td>@item.ArrivalDateTime.ToString()</td>
+                            <td>@item.AircraftID.ToString()</td>
+                            <td>@item.AircraftModel.ToString()</td>
+                            <td>@item.Status</td>
+
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <a style="color:black; border-style:solid; border-radius:5px; padding:10px;" asp-controller="AdminActions" asp-action="ViewAircraft">Back to List</a>
+
+        </div>
+        </div>
+        }
+        else
+        {
+        <span style="color:red">No record Found</span>
+        <div>
+            <a style="color:black; border-style:solid; border-radius:5px; padding:10px;" asp-controller="AdminActions" asp-action="ViewAircraft">Back to List</a>
+
+        </div>
+        }

@@ -1,0 +1,73 @@
+﻿@model web2020apr_p01_t3.Models.CrewIDs
+
+@{
+    ViewData["Title"] = "AssignPersonnel";
+}
+
+
+<h4 class="PageTitle">Assign Personnel</h4>
+<hr />
+<form asp-action="AssignPersonnel">
+    <fieldset class="FormContent">
+        <div class="form-group row">
+            <label asp-for="ID01" class="col-sm-3 col-form-label">Captain</label>
+            <span style="color: red;">@TempData["ID01"]</span>
+            <div class="col-sm-9 col-md-5">
+                <select asp-for="ID01" id="Captain" onchange="toggleUpdateField()"
+                        asp-items="@ViewData["Pilot List"] as List<SelectListItem>"
+                        class="form-control">
+                </select>
+                <label asp-for="ID02" class="col-sm-3 col-form-label">Pilot</label>
+                <select asp-for="ID02" id="Pilot" onchange="toggleUpdateField()"
+                        asp-items="@ViewData["Pilot List"] as List<SelectListItem>"
+                        class="form-control">
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="ID03" class="col-sm-3 col-form-label">Cabin Crew Leader</label>
+            <div class="col-sm-9 col-md-5">
+                <select asp-for="ID03" id="Cabin Crew Leader" onchange="toggleUpdateField()"
+                        asp-items="@ViewData["Attendant List"] as List<SelectListItem>"
+                        class="form-control">
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="ID04" class="col-sm-3 col-form-label">Flight Attendant 1</label>
+            <div class="col-sm-9 col-md-5">
+                <select asp-for="ID04" id="Flight Attendant1" onchange="toggleUpdateField()"
+                        asp-items="@ViewData["Attendant List"] as List<SelectListItem>"
+                        class="form-control">
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="ID05" class="col-sm-3 col-form-label">Flight Attendant 2</label>
+            <div class="col-sm-9 col-md-5">
+                <select asp-for="ID05" id="Flight Attendant2" onchange="toggleUpdateField()"
+                        asp-items="@ViewData["Attendant List"] as List<SelectListItem>"
+                        class="form-control">
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="ID06" class="col-sm-3 col-form-label">Flight Attendant 3</label>
+            <div class="col-sm-9 col-md-5">
+                <select asp-for="ID06" id="Flight Attendant3" onchange="toggleUpdateField()"
+                        asp-items="@ViewData["Attendant List"] as List<SelectListItem>"
+                        class="form-control">
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-9 offset-sm-3">
+                <input type="submit"
+                       class="btn btn-primary" />
+            </div>
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </fieldset>
+</form>

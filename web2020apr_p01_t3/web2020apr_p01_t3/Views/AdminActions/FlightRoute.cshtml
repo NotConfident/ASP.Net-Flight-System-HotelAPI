@@ -1,0 +1,26 @@
+﻿@model IEnumerable<web2020apr_p01_t3.Models.FlightRoute>
+
+<link rel="stylesheet" type="text/css" href="~/css/table.css">
+
+@{
+    ViewData["Title"] = "View Flight Route";
+}
+
+<h1><center>View Flight Route</center></h1>
+<!-- Add a partial view to display a list of staff records
+ in a tabular format. -->
+@if (Context.Session.GetString("Role") == "Administrator")
+{
+    <partial name="~/Views/AdminActions/ViewFlightRoute.cshtml" model="@Model" />
+}
+else
+{
+    <partial name="~/Views/Home/Index.cshtml" model="@Model" />
+
+}
+
+<script type="text/javascript">function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };</script>
+
+

@@ -1,0 +1,99 @@
+﻿@model web2020apr_p01_t3.Models.FlightSchedule
+@{
+    ViewData["Title"] = "Delete";
+}
+<h4 class="PageTitle">Delete Flight Route Record</h4>
+<hr />
+<form asp-action="DeleteSchedule">
+    <fieldset>
+        <div class="form-group row">
+            <label asp-for="ScheduleID"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="ScheduleID" readonly class="form-control-plaintext" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="RouteID"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="RouteID" readonly class="form-control-plaintext" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="FlightNumber"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="FlightNumber" readonly class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="DepartureDateTime"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input type="date" min="2020-01-01" max="2020-12-30" id="DepartureDateTime" readonly asp-for="DepartureDateTime" required />
+                &nbsp;:&nbsp;
+                <select asp-for="DepartureHours" readonly id="Hours" name="Hours" required>
+                    <option value="0" selected="selected">0</option>
+                    @for (int i = 1; i <= 24; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                &nbsp;:&nbsp;
+                <select asp-for="DepartureMins" readonly id="Mins" name="Mins" required>
+                    <option value="0" selected="selected">0</option>
+                    @for (int i = 1; i <= 60; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                &nbsp;:&nbsp;
+                <select asp-for="DepartureSeconds" readonly id="Seconds" name="Seconds" required>
+                    <option value="0" selected="selected">0</option>
+                    @for (int i = 1; i <= 60; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="PriceEco"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="PriceEco" readonly class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="PriceBusiness"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="PriceBusiness" readonly class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Status"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="Status" readonly class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-9 offset-sm-3">
+                <input type="submit" value="Delete"
+                       class="btn btn-primary" />
+            </div>
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<web2020apr_p01_t3.Models.Personnel>
+    <link rel="stylesheet" href="~/css/table.css" />
+
+@if (Model.ToList().Count > 0)
+{
+    <div class="table-responsive" id="table-padding">
+        <table id="viewStaff" class="rwd-table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>StaffID</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>DateEmployed</th>
+                    <th>Vocation</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.StaffId.ToString()</td>
+                        <td>@item.StaffName</td>
+                        <td>@item.Gender</td>
+                        <td>@item.DateEmployed</td>
+                        <td>@item.Vocation</td>
+                        <td>@item.EmailAddr</td>
+                        <td>@item.Status</td>
+                        <td>
+                            <a asp-action="ViewPersonnelDetails" asp-controller="AdminActions"
+                               asp-route-id="@item.StaffId">Details</a> |
+                            <a asp-action="UpdatePersonnelStatus" asp-controller="AdminActions"
+                               asp-route-id="@item.StaffId">Update</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <span style="color:red">No record found!</span>
+}

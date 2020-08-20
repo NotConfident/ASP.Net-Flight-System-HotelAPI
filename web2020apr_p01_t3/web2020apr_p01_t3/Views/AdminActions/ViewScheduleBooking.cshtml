@@ -1,0 +1,149 @@
+﻿@model web2020apr_p01_t3.Models.ViewModel
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/schedulebooking.css">
+    <link rel="stylesheet" type="text/css" href="~/css/schedulebookingmain.css">
+    <link rel="stylesheet" href="~/css/table.css" />
+</head>
+
+
+<div class="wrap-contact100">
+    <form asp-action="ViewScheduleBooking">
+        <div class="form-group row">
+            <label asp-for="ScheduleID"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="ScheduleID" readonly class="form-control-plaintext" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="RouteID"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                @Html.DisplayFor(x => Model.RouteID)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="FlightNumber"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                @Html.DisplayFor(x => Model.FlightNumber)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="AircraftID"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                @Html.DisplayFor(x => Model.AircraftID)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="DepartureDateTime"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                @Html.DisplayFor(x => Model.DepartureDateTime)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="PriceEco"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                @Html.DisplayFor(x => Model.PriceEco)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="PriceBusiness"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                @Html.DisplayFor(x => Model.PriceBusiness)
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Status"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+
+                <select asp-for="Status" id="Status" name="Status" required>
+                    <option value="0" selected="selected">@Model.Status</option>
+
+                    @foreach (string status in Model.statusList.ToList())
+                    {
+                        @if (Model.Status == status)
+                        {
+                            //int index = Model.statusList.IndexOf(Model.Status);
+                            Model.statusList.Remove(status);
+                        }
+                    }
+
+                    @foreach (string status in Model.statusList.ToList())
+                    {
+                        <option value="@status">@status</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        @if (Model.ScheduleBooking.ToList().Count > 0)
+        {
+            <div class="table-responsive">
+                <table id="viewStaff" class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Schedule ID</th>
+                            <th>Booking ID</th>
+                            <th>Customer ID</th>
+                            <th>Passenger Name</th>
+                            <th>Passport Number</th>
+                            <th>Nationality</th>
+                            <th>Seat Class</th>
+                            <th>Amount Payable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ScheduleBooking)
+                        {
+                            <tr>
+                                <td>@item.ScheduleID</td>
+                                <td>@item.BookingID</td>
+                                <td>@item.CustID</td>
+                                <td>@item.PassengerName</td>
+                                <td>@item.PassportNo</td>
+                                <td>@item.Nationality</td>
+                                <td>@item.SeatClass </td>
+                                <td>$@Html.DisplayFor(x => item.AmountPayable)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <span style="color:red">No record found!</span>
+        }
+
+        <div class="form-group row">
+            <div class="col-sm-9 offset-sm-3">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+    <div>
+        <a asp-action="FlightSchedule">Back to List</a>
+    </div>
+</div>
+
+
+
+

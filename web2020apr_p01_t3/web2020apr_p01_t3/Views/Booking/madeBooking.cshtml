@@ -1,0 +1,95 @@
+﻿@model web2020apr_p01_t3.Models.BookingModel
+
+@{
+    ViewData["Title"] = "Booking";
+}
+<body>
+<div class="booking shadow p-3 rounded col-lg-8 col-11">
+
+    <form asp-action="madeBooking" id="myform">
+        <fieldset>
+            <div class="text-lg-center text-center ">
+                <h2>Booking</h2>
+            </div>
+
+            <div class="row">
+                <div class="input-group col mb-3 col-11 col-lg-6">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Passenger Namge</span>
+                    </div>
+                    <input asp-for="customerName"
+                           class="form-control"
+                           aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default" 
+                           required/>
+                    <span asp-validation-for="customerName" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="input-group col mb-3  col-11 col-lg-6">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Passport Number</span>
+                    </div>
+                    <input asp-for="passpoerNum"
+                           class="form-control"
+                           aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default"
+                           required/>
+                    <span asp-validation-for="passpoerNum" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group col mb-3 col-11 col-lg-6">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Seat Class</span>
+                    </div>
+                    <select asp-for="sitClass" class="form-control form-check-input">
+                        <option>Economy</option>
+                        <option>Business</option>
+                    </select>
+
+                </div>
+
+                <div class="input-group col mb-3  col-11 col-lg-6">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nationality</span>
+                    </div>
+                    <input asp-for="nationality"
+                           class="form-control"
+                           aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default" 
+                           required/>
+                    <span asp-validation-for="nationality" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group col mb-3  col-11 col-lg-6">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Remark</span>
+                    </div>
+                    <input asp-for="remark"
+                           class="form-control"
+                           aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default" />
+                    <span asp-validation-for="remark" class="text-danger"></span>
+                </div>
+            </div>
+            <input asp-for="customerID" class="form-control" hidden />
+            <input asp-for="scheduleID" class="form-control" hidden />
+            <button type="submit" onclick="clear()" class="text-center btn btn-primary ">Book</button>
+            <span style="color: green;">@TempData["Message"]</span>
+        </fieldset>
+    </form>
+
+</div>
+
+<script>
+        function clear() {
+            document.getElementById("myform").reset();
+         }
+</script>
+</body>
+
+
+

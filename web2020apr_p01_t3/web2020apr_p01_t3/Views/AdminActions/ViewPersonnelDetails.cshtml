@@ -1,0 +1,124 @@
+﻿@model web2020apr_p01_t3.Models.PersonnelViewModel
+
+<head>
+    <title>Contact V5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/noui/nouislider.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/schedulebooking.css">
+    <link rel="stylesheet" type="text/css" href="~/css/schedulebookingmain.css">
+    <link rel="stylesheet" href="~/css/table.css" />
+    <!--===============================================================================================-->
+</head>
+
+<h4 class="PageTitle">View Personnel Details</h4>
+<hr />
+
+<div class="wrap-contact100">
+    <fieldset>
+        <div class="form-group row">
+            <label asp-for="StaffId" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                @Model.StaffId
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="StaffName" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                @Model.StaffName
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Gender" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+                <div class="form-group form-check-inline">
+                    <label class="col-form-label">
+                        <input asp-for="Gender" type="radio" value="M"
+                               class="form-check-input" disabled />
+                        <span style="font-weight:normal;
+                                 padding-right:20px">Male</span>
+                    </label>
+                    <label class="col-form-label">
+                        <input asp-for="Gender" type="radio" value="F"
+                               class="form-check-input" disabled />
+                        <span style="font-weight:normal;
+                                 padding-right:20px">Female</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="DateEmployed" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                @Model.DateEmployed
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Vocation"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 form-control-plaintext">
+                @Model.Vocation
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="EmailAddr" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 form-control-plaintext">
+                @Model.EmailAddr
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Status" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 form-control-plaintext">
+                @Model.Status
+            </div>
+        </div>
+        <table id="ScheduleDetailsOfPersonnel" class="table table-striped table-bordered">
+            <theadn class="thead-dark">
+                <tr>
+                    <th>Schedule ID</th>
+                    <th>Flight Number</th>
+                    <th>Route ID</th>
+                    <th>Aircraft ID</th>
+                    <th>Role</th>
+                </tr>
+            </theadn>
+            <tbody>
+                @foreach (CrewSchedule crewSchedule in Model.csList)
+                {
+                    //FlightSchedule reqSchedule = null;
+                    //{
+                    //    if (schedule.ScheduleID == crew.scheduleID)
+                    //    {
+                    //        reqSchedule = schedule;
+                    //    }
+                    //    break;
+                    //}
+                    <tr>
+                        <td>@crewSchedule.scheduleID</td>
+                        <td>@crewSchedule.FlightNumber</td>
+                        <td>@crewSchedule.RouteID</td>
+                        <td>@crewSchedule.AircraftID</td>
+                        <td>@crewSchedule.Role</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </fieldset>
+</div>

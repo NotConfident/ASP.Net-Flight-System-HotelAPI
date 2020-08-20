@@ -1,0 +1,71 @@
+﻿@model IEnumerable<web2020apr_p01_t3.Models.FlightRoute>
+
+<link rel="stylesheet" type="text/css" href="~/css/table.css">
+
+@if (TempData["CreateRouteSuccess"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <strong>@TempData["CreateRouteSuccess"]</strong>
+    </div>
+}
+@if (TempData["DeleteRouteSuccess"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <strong>@TempData["DeleteRouteSuccess"]</strong>
+    </div>
+}
+@if (TempData["EditRouteSuccess"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <strong>@TempData["EditRouteSuccess"]</strong>
+    </div>
+}
+@if (TempData["DeleteRouteFail"] != null)
+{
+    <div class="alert alert-danger alert-dismissable">
+        <strong>@TempData["DeleteRouteFail"]</strong>
+    </div>
+}
+
+@if (Model.ToList().Count > 0)
+{
+    <div class="table-responsive" id="table-padding">
+        <table id="viewStaff" class="rwd-table table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Route ID</th>
+                    <th>Departure Country</th>
+                    <th>Departure City</th>
+                    <th>Arrival Country</th>
+                    <th>Arrival City</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.RouteID.ToString()</td>
+                        <td>@item.DepartureCountry.ToString()</td>
+                        <td>@item.DepartureCity.ToString()</td>
+                        <td>@item.ArrivalCountry.ToString()</td>
+                        <td>@item.ArrivalCity.ToString()</td>
+                        <td>@item.FlightDuration.ToString()</td>
+                        <!--td>
+                            <a asp-action="EditFlightRoute" asp-controller="AdminActions" asp-route-id="item.RouteID">Edit</a> |
+                            <a asp-action="DeleteRoute" asp-controller="AdminActions" asp-route-id="item.RouteID">Delete</a>
+                        </td-->
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-success alert-dismissable">
+        <strong>No records found!</strong>
+    </div>
+}
+
+

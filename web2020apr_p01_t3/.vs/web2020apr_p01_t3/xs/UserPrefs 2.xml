@@ -1,0 +1,44 @@
+﻿<Properties StartupConfiguration="{179924EC-5807-44AF-A048-FBD012D807A5}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../../../../../Downloads/colorlib-search-2/index.html">
+    <Files>
+      <File FileName="web2020apr_p01_t3/Views/Shared/_Layout.cshtml" Line="40" Column="47" />
+      <File FileName="web2020apr_p01_t3/Views/Home/HotelAPI.cshtml" Line="65" Column="101" />
+      <File FileName="web2020apr_p01_t3/Controllers/HomeController.cs" Line="167" Column="1" />
+      <File FileName="web2020apr_p01_t3/Views/Home/SearchAPI.cshtml" Line="38" Column="1" />
+      <File FileName="web2020apr_p01_t3/Controllers/AdminActionsController.cs" Line="1" Column="1" />
+      <File FileName="web2020apr_p01_t3/Views/Home/_login.cshtml" Line="1" Column="1" />
+      <File FileName="web2020apr_p01_t3/wwwroot/index.html" Line="9" Column="10" />
+      <File FileName="../../../../../../../../Downloads/colorlib-search-2/index.html" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="web2020apr_p01_t3" expanded="True">
+            <Node name="web2020apr_p01_t3" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="AdminActions" expanded="True" />
+                <Node name="Home" expanded="True">
+                  <Node name="SearchAPI.cshtml" selected="True" />
+                </Node>
+                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.web2020apr__p01__t3 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Web Application Development/Assignment/Assignment/web2020_p01_team3/web2020apr_p01_t3/web2020apr_p01_t3/Controllers/HomeController.cs" relfile="web2020apr_p01_t3/Controllers/HomeController.cs" line="115" column="1" />
+      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Web Application Development/Assignment/Assignment/web2020_p01_team3/web2020apr_p01_t3/web2020apr_p01_t3/Controllers/HomeController.cs" relfile="web2020apr_p01_t3/Controllers/HomeController.cs" line="167" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

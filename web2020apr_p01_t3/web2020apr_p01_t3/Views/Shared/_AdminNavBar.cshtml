@@ -1,0 +1,84 @@
+﻿<link rel="stylesheet" type="text/css" href="~/css/schedulebookingmain.css">
+<link rel="stylesheet" href="~/css/table.css" />
+<link rel="stylesheet" type="text/css" href="~/css/navbar.css">
+
+<nav>
+    <ul>
+        @if (Context.Session.GetString("Role") != null)
+        {
+            if (Context.Session.GetString("Role") == "Administrator")
+            {
+                <li><a asp-controller="AdminActions" asp-action="Index">Home</a></li>
+            }
+
+        }
+        else
+        {
+            <li><a href="~/Home/Index" class="nav-link">Home</a></li>
+        }
+        <li>
+            <a href="#0">View</a>
+            <ul>
+                <li>
+                    <a asp-controller="AdminActions" asp-action="FlightRoute">View Flight Route</a>
+                </li>
+                <li>
+                    <a asp-controller="AdminActions" asp-action="FlightSchedule">View Flight Schedule</a>
+                </li>
+                <li>
+                    <a asp-controller="AdminActions" asp-action="ViewAircraft">View Aircraft Records</a>
+                </li>
+                <li>
+                    <a asp-controller="AdminActions" asp-action="PersonnelIndex">View Personnel Records</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#0">Create</a>
+            <ul>
+                <li>
+                    <a asp-controller="AdminActions" asp-action="CreateFlightRoute">Create Flight Route</a>
+                </li>
+                <li>
+                    <a asp-controller="AdminActions" asp-action="CreateFlightSchedule">Create Flight Schedule</a>
+                </li>
+                <li>
+                    <a asp-controller="AdminActions" asp-action="CreateAircraft">Create Aircraft</a>
+                </li>
+                <li>
+                    <a asp-controller="AdminActions" asp-action="CreatePersonnel">Create Personnel</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#0">Assign</a>
+            <ul>
+                <li>
+                    <a asp-controller="AdminActions" asp-action="AssignAircraft">Assign Aircraft</a>
+                </li>
+
+            </ul>
+
+        </li>
+        @if (Context.Session.GetString("Role") != null)
+        {
+            if (Context.Session.GetString("Role") == "Administrator")
+            {
+                <li><a href="~/Home/Logout">Logout</a></li>
+            }
+
+        }
+        else
+        {
+            <li><a href="~/Home/Login" class="nav-link">Login</a></li>
+        }
+
+    </ul>
+
+</nav>
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+﻿@model web2020apr_p01_t3.Models.FlightRoute
+
+@{
+    ViewData["Title"] = "Create Flight Route";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="~/css/schedulebookingmain.css">
+<link rel="stylesheet" href="~/css/table.css" />
+
+<h4 class="PageTitle">Add New Flight Route</h4>
+@if (TempData["CreateRouteFail"] != null)
+{
+    <div class="alert alert-danger alert-dismissable ">
+        <strong>@TempData["CreateRouteFail"]</strong>
+    </div>
+}
+<hr />
+<div class="wrap-contact100">
+    <form asp-action="CreateFlightRoute">
+        <fieldset class="FormContent">
+            <div class="form-group row">
+                <div class="col-sm-9 col-md-5">
+                    <label asp-for="DepartureCountry" class="col-sm-3 col-form-label"></label>
+                    <input asp-for="DepartureCountry" class="form-control" placeholder="Enter Country of Departure" required />
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group row">
+                <div class="col-sm-9 col-md-5">
+                    <label asp-for="DepartureCity" class="col-sm-3 col-form-label"></label>
+                    <input asp-for="DepartureCity" class="form-control" placeholder="Enter City of Departure" required />
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group row">
+                <div class="col-sm-9 col-md-5">
+                    <label asp-for="ArrivalCountry" class="col-sm-3 col-form-label"></label>
+                    <input asp-for="ArrivalCountry" class="form-control" placeholder="Enter Country of Arrival" required />
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group row">
+                <div class="col-sm-9 col-md-5">
+                    <label asp-for="ArrivalCity" class="col-sm-3 col-form-label"></label>
+                    <input asp-for="ArrivalCity" class="form-control" placeholder="Enter City of Arrival" required />
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Duation Of Flight (Hours)</label>
+                <select asp-for="FlightDuration" id="FlightDuration" name="FlightDuration" required>
+                    <option value="1" selected="selected">1</option>
+                    @for (int i = 2; i <= 24; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+            </div>
+
+            <br />
+
+            <div class="form-group row">
+                <div class="col-sm-9 offset-sm-3">
+                    <button type="submit" class="btn btn-primary mb-2">Create</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+

@@ -1,0 +1,42 @@
+﻿@model web2020apr_p01_t3.Models.ProfileModel
+
+
+
+@if (Model.customer.ToString() != "")
+{
+    <div>
+        <div class="profile shadow p-3 mb-5 rounded col-11 col-lg-10">
+            <div class="row">
+                <div class="profile-pic p-3 mb-5 shadow-sm col-md-4  col-10"></div>
+                <div class="col-12 col-md-4 col-sm-6 col details">
+                    <div class="row">
+                        <p class="lable row">Name</p>
+                        <h4 class="data row">@Model.customer.Name</h4>
+                    </div>
+                    <div class="row">
+                        <p class="lable row">Email</p>
+                        <h4 class="data row">@Model.customer.cEmail</h4>
+                    </div>
+                    <div class="row">
+                        <p class="lable row">Contact</p><br>
+                        <h4 class="data row">@Model.customer.cTeleNo</h4>
+                    </div>
+                    <div class="row">
+                        <p class="lable row">Date of birth</p>
+                        <h4 class="data row">@Model.customer.cDOB</h4>
+                    </div>
+                    <div class="row">
+                        <p class="lable row">Nationality</p><br>
+                        <h4 class="data row">@Model.customer.Nationality</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="btn-div col-6 col-md-4 col-sm-6 col-8 shadow p-3 mb-5 rounded">
+                    <a asp-action="updateProfile" asp-controller="Customer" asp-route-id="@Model.customer.id">Change password</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

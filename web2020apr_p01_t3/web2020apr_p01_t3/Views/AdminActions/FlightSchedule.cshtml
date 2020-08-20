@@ -1,0 +1,24 @@
+﻿@model IEnumerable<web2020apr_p01_t3.Models.FlightScheduleViewModel>
+<link rel="stylesheet" href="~/css/table.css" />
+
+@{
+    ViewData["Title"] = "View Flight Schedule";
+}
+
+<h1><center>View Flight Schedule</center></h1>
+<!-- Add a partial view to display a list of staff records
+ in a tabular format. -->
+@if (Context.Session.GetString("Role") == "Administrator")
+{
+    <partial name="~/Views/AdminActions/ViewFlightSchedule.cshtml" model="@Model" />
+}
+else
+{
+    <partial name="~/Views/Home/Index.cshtml" model="@Model" />
+
+}
+
+<script type="text/javascript">
+function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };</script>

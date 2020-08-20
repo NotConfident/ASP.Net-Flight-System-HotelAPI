@@ -1,0 +1,53 @@
+﻿@model web2020apr_p01_t3.Models.CustomerModel
+
+@{
+    ViewData["Title"] = "Register Account";
+}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="~/css/site.css">
+<body>
+    <div class="container-fluid col-12 col-lg-12 text-left">
+        <div class="hero-image">
+
+            <div class="signup-form">
+                <form asp-action="createProfile">
+                    <h2>Register</h2>
+                    <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+                    <div class="form-group">
+                        <input asp-for="Name" class="form-control" name="Name" placeholder="User Name" required="required" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="cEmail" type="email" class="form-control" name="cEmail" placeholder="Email" required="required">
+                        <span asp-validation-for="cEmail" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="cDOB" class="form-control" name="cDOB">
+                        <span asp-validation-for="cDOB" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="Nationality" type="text" class="form-control" name="Nationality" placeholder="Nationality">
+                        <span asp-validation-for="cDOB" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="cTeleNo" type="text" class="form-control" name="cTeleNo" placeholder="Contact No" pattern="[6|9|8][0-9]{7}">
+                        <span asp-validation-for="cTeleNo" class="text-danger"></span>
+                    </div>
+                    <span style="color: red;">@TempData["Message"]</span>
+                    <div class="form-group">
+                        <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" value="create" class="btn btn-success btn-lg btn-block">Register Now</button>
+                    </div>
+                    <div class="text-center">Already have an account? <a href="/Home/Index">Sign in</a></div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>

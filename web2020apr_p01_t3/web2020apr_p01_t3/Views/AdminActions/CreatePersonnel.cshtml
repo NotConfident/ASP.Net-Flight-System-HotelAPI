@@ -1,0 +1,102 @@
+﻿@model web2020apr_p01_t3.Models.Personnel
+
+@{
+    ViewData["Title"] = "Create Personnel Record";
+}
+
+<h4 class="PageTitle">Add Staff Record</h4>
+<hr />
+<form asp-action="CreatePersonnel">
+    <fieldset class="FormContent">
+        <div class="form-group row">
+            <label asp-for="StaffName"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="StaffName" class="form-control" type="text" pattern="[a-zA-Z\s]+$" />
+                <span asp-validation-for="StaffName"
+                      class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Gender"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <div class="form-group form-check-inline">
+                    <label class="col-form-label">
+                        <input asp-for="Gender" type="radio" value="M"
+                               checked class="form-check-input" />
+                        <span>Male</span>
+                    </label>
+                    <label class="col-form-label">
+                        <input asp-for="Gender" type="radio" value="F"
+                               class="form-check-input" />
+                        <span>Female</span>
+                        <label class="col-form-label">
+                            <input asp-for="Gender" type="radio" value="null"
+                                   class="form-check-input" />
+                            <span>Unspecified</span>
+                        </label>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="DateEmployed"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="DateEmployed" class="form-control" />
+                <span asp-validation-for="DateEmployed"
+                      class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Vocation"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <select asp-for="Vocation"
+                        asp-items="@ViewData["Vocations"]
+                                     as List<SelectListItem>"
+                        class="form-control">
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="EmailAddr"
+                   class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="EmailAddr" class="form-control" type="email">
+                <span asp-validation-for="EmailAddr"
+                      class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="checkbox col-sm-9 offset-sm-3">
+                <label asp-for="Status"
+                       class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9 col-md-5">
+                    <div class="form-group form-check-inline">
+                        <label class="col-form-label">
+                            <input asp-for="Status" type="radio" value="Active"
+                                   checked class="form-check-input" />
+                            <span>Active</span>
+                        </label>
+                        <label class="col-form-label">
+                            <input asp-for="Status" type="radio" value="Inactive"
+                                   class="form-check-input" />
+                            <span>Inactive</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-9 offset-sm-3">
+                <input type="submit" value="Create"
+                       class="btn btn-primary" />
+            </div>
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </fieldset>
+</form>

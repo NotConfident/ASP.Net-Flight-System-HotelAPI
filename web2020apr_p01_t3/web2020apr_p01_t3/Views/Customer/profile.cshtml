@@ -1,0 +1,23 @@
+﻿@model web2020apr_p01_t3.Models.ProfileModel
+
+
+@{
+    ViewData["Title"] = "profile";
+}
+
+
+@section Styles {
+    <link href="@Url.Content("~/css/profile.css")" rel="stylesheet" type="text/css" />
+}
+
+<body>
+    <div class="container-fluid">
+        <partial name="~/Views/Customer/_userinfo.cshtml" />
+        <div class=" col-11 col-lg-10 break"><h1>My booking details</h1></div>
+        <partial name="~/Views/Customer/_bookingdetails.cshtml" />
+    </div>
+
+
+</body>
+
+

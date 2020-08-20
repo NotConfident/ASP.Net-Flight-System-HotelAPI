@@ -1,0 +1,54 @@
+﻿<link rel="stylesheet" type="text/css" href="~/css/schedulebookingmain.css">
+<link rel="stylesheet" href="~/css/table.css" />
+<link rel="stylesheet" type="text/css" href="~/css/navbar.css">
+
+@*<li><a href="~/Home/Index/">Home</a></li>
+<li><a href="#0">About</a></li>
+<li><a href="~/Home/ContactUs">Contact Us</a></li>
+<li><a href="~/Home/HotelAPI">Hotel Search</a></li>*@
+
+<nav>
+    <ul>
+        @if (Context.Session.GetString("Role") != null)
+        {
+            if (Context.Session.GetString("Role") == "Customer")
+            {
+                <li><a asp-controller="Customer" asp-action="Index">Home</a></li>
+            }
+
+        }
+        else
+        {
+            <li><a href="~/Home/Index" class="nav-link">Home</a></li>
+        }
+        <li>
+            <a href="~/Home/ContactUs">Contact Us</a>
+        </li>
+        <li>
+        <a href="~/Home/SearchAPI">Hotel Search</a>
+        </li>
+        <li>
+            <a asp-controller="Customer" asp-action="profile">Profile</a>
+        </li>
+        @if (Context.Session.GetString("Role") != null)
+        {
+            if (Context.Session.GetString("Role") == "Customer")
+            {
+                <li><a href="~/Home/Logout">Logout</a></li>
+            }
+
+        }
+        else
+        {
+            <li><a href="~/Home/Login" class="nav-link">Login</a></li>
+        }
+
+    </ul>
+
+</nav>
+
+
+
+
+
+

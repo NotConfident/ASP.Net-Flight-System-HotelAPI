@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "Admin Main Page";
+}
+
+
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+        
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Value'],
+          ['2019-01',  2726368],
+          ['2019-02',  2522088],
+          ['2019-03',  2787741],
+          ['2019-04',  2700598],
+          ['2019-05',  2691345],
+          ['2019-06',  2834087],
+          ['2019-07',  2853267],
+          ['2019-08',  2911530],
+          ['2019-09',  2682724],
+          ['2019-10',  2801262],
+          ['2019-11',  2855679],
+          ['2019-12',  3132828],
+          ['2020-01',  2855679],
+          ['2020-02',  2893053]
+          //['2020-03',  1000],
+          //['2020-04',  1000],
+          //['2020-05',  1000],
+          //['2020-06',  1000],
+          //['2020-07',  1000],
+          //['2020-08',  1000],
+          //['2020-09',  1000],
+          //['2020-10',  1000],
+          //['2020-11',  1000],
+          //['2020-12',  1000],
+        ]);
+
+        var options = {
+          title: 'Number of Passenger Departures',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+<body>
+    <div id="curve_chart" style="width: 1500px; height: 700px;"></div>
+</body>
+</html>

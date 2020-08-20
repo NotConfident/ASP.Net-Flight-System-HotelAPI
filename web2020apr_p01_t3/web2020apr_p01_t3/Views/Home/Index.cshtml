@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lion City Airlines</title>
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/homepage.css">
+    <link rel="stylesheet" type="text/css" href="~/css/table.css">
+
+    @section Styles {
+        <link href="@Url.Content("~/css/profile.css")" rel="stylesheet" type="text/css" />
+
+    }
+</head>
+
+@if (Context.Session.GetString("Role") != "Administrator")
+{
+    <body>
+        <div class="hero-image container-fluid">
+            <div class="row hero-row">
+                <div class="col vcenter">
+                    <div class="page-title">
+                        <h1>Lion City<br /> Airlines</h1>
+                    </div>
+
+
+                </div>
+                <div class="col vcenter">
+                    <div class="col login-box">
+                        <form class="login-form" method="post" action="~/Home/login">
+                            <h2>Login</h2>
+                            <div class="user-box">
+                                <input type="email" name="txtLoginID" id="txtLoginID" placeholder="Email" class="form-control-material" required />
+                            </div>
+                            <div class="user-box">
+                                <input type="password" name="txtPassword" id="txtPassword" placeholder="Password" class="form-control-material" required />
+                            </div>
+                            <button type="submit" value="login">
+
+                                Login
+                            </button>
+                            <span style="color: red;">@TempData["Message"]</span>
+                        </form>
+                        <br />
+                        <a href="/Customer/createProfile">create Profile</a>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div>
+                <partial name="~/Views/Schedule/_searchScheduleHome.cshtml" />
+            </div>
+
+        </div>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    </body>
+
+}
+else
+{
+    <partial name="~/Views/AdminActions/Index.cshtml" />
+}
+</html>

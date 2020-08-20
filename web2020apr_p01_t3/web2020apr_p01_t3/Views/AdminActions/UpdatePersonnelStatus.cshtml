@@ -1,0 +1,57 @@
+﻿@model web2020apr_p01_t3.Models.Personnel
+
+
+<head>
+    <title>Contact V5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/noui/nouislider.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/schedulebooking.css">
+    <link rel="stylesheet" type="text/css" href="~/css/schedulebookingmain.css">
+    <link rel="stylesheet" href="~/css/table.css" />
+    <!--===============================================================================================-->
+</head>
+
+<h4 class="PageTitle">Update Personnel Status</h4>
+<hr />
+<div class="registration-form">
+        <fieldset class="FormContent">
+            <div class="form-group">
+                <label asp-for="StaffId" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9 col-md-5">
+                    <input asp-for="StaffId" readonly-class="form-control plaintext" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="StaffName" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9 col-md-5">
+                    <input asp-for="StaffName" readonly-class="form-control plaintext" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9 col-md-5">
+                    <select asp-for="Status" asp-items="@ViewData["Status List"] as List<SelectListItem>" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 offset-sm-3">
+                    <input type="Submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </fieldset>
+</div>

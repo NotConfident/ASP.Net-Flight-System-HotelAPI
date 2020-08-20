@@ -1,0 +1,35 @@
+﻿@{
+}
+
+<header>
+    <div class="container">
+        <!-- 1st row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <p style="padding:2px 15px;">
+                    @{
+                        string userId = "Anonymous";
+                        string userRole = "Unknown";
+                        string Time = "Unknown";
+                        if (Context.Session.GetString("LoginID") != null)
+                        {
+                            userId = Context.Session.GetString("LoginID");
+                        }
+                        if (Context.Session.GetString("Role") != null)
+                        {
+                            userRole = Context.Session.GetString("Role");
+                        }
+                        if (Context.Session.GetString("TimeLog") != null)
+                        {
+                            Time = Context.Session.GetString("TimeLog");
+                        }
+                    }
+                    Welcome,&nbsp;
+                    <span style="font-weight:bold">@userId</span>&nbsp;
+                    (Role: @userRole).&nbsp;
+                    You have logged in since @Time
+                </p>
+            </div>
+        </div>
+    </div>
+</header>

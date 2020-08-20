@@ -1,0 +1,96 @@
+﻿@model IEnumerable<web2020apr_p01_t3.Models.Hotel>
+
+@if (TempData["APIError"] != null)
+{
+    <div class="alert alert-danger alert-dismissable">
+        <strong>@TempData["APIError"]</strong>
+    </div>
+}
+<link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/css/schedulebooking.css">
+<link rel="stylesheet" type="text/css" href="~/css/schedulebookingmain.css">
+<link rel="stylesheet" href="~/css/table.css" />
+
+@if (Model.ToList().Count > 0)
+{
+    <br />
+    <br>
+    <div class="wrap-contact100">
+        <div class="table-responsive">
+            <table id="viewBook" class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Hotel Name</th>
+                        <th>Hotel ID</th>
+                        <th>Price / Tax / Vendor</th>
+                        <th>Price / Tax / Vendor</th>
+                        <th>Price / Tax / Vendor</th>
+                        <th>Price / Tax / Vendor</th>
+                        <th>Price / Tax / Vendor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Hotel item in Model)
+                    {
+                        <tr>
+                            <td>@item.hotelName</td>
+                            <td>@item.hotelId</td>
+
+                            @if (item.price1 != "")
+                            {
+                                <td>$@item.price1 / $@item.tax1 / <a href="https://www.@item.vendor1">@item.vendor1</a> </td>
+
+                            }
+                            else
+                            {
+                                <td><i>NULL</i></td>
+
+                            }
+                            @if (item.price2 != "")
+                            {
+                                <td>$@item.price2 / $@item.tax2 / <a href="https://www.@item.vendor2">@item.vendor2</a> </td>
+
+                            }
+                            else
+                            {
+                                <td><i>NULL</i></td>
+
+                            }
+                            @if (item.price3 != "")
+                            {
+                                <td>$@item.price3 / $@item.tax3 / <a href="https://www.@item.vendor3">@item.vendor3</a> </td>
+
+                            }
+                            else
+                            {
+                                <td><i>NULL</i></td>
+
+                            }
+                            @if (item.price4 != "")
+                            {
+                                <td>$@item.price4 / $@item.tax4 / <a href="https://www.@item.vendor4">@item.vendor4</a> </td>
+
+                            }
+                            else
+                            {
+                                <td><i>NULL</i></td>
+
+                            }
+                            @if (item.price5 != "")
+                            {
+                                <td>$@item.price5 / $@item.tax5 / <a href="https://www.@item.vendor5">@item.vendor5</a> </td>
+
+                            }
+                            else
+                            {
+                                <td><i>NULL</i></td>
+
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

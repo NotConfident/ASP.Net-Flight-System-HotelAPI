@@ -1,0 +1,28 @@
+﻿@{
+}
+
+<div class="container" id="mainContainer">
+    <!-- 1st row -->
+    <div class="flex-container">
+
+        <div>
+            <form method="post" action="~/Home/StaffLogin">
+                <fieldset class="loginFieldset">
+                    <legend>Admin Login</legend>
+                    <label for="txtLoginID">Login ID:</label>
+                    <input type="text" name="txtLoginID" id="txtLoginID" required />
+                    <br />
+                    <label for="txtPassword">Password:</label>
+                    <input type="password" name="txtPassword" id="txtPassword" style="width:100px" required />
+                    <input type="submit" id="btnStaffLogin" class="myButton" value="Login" />
+
+                    <br>
+                    <span style="color: red;">@TempData["Message"]</span>
+
+                </fieldset>
+            </form>
+        </div>
+
+    </div>
+
+</div>

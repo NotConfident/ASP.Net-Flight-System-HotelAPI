@@ -1,0 +1,66 @@
+﻿@model IEnumerable<web2020apr_p01_t3.Models.Aircraft>
+
+@{
+    ViewData["Title"] = "DateFilter";
+}
+
+<link rel="stylesheet" href="~/css/table.css" />
+
+
+
+@if (Model.ToList().Count > 0)
+{
+    <div id="table-padding">
+
+        <h1><center>View Aircraft Records</center></h1>
+        <input class="fill" type="button" value="Reset" onclick="location.href='@Url.Action("ViewAircraft", "AdminActions")'" />
+
+        <table class="rwd-table" id="viewAircraft">
+            <tr>
+                <th>ID</th>
+                <th>Model Name</th>
+                <th>No. of Economy Seats</th>
+                <th>No. of Business Seats</th>
+                <th>Date of Last Maintenanace</th>
+                <th>Status</th>
+
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.AircraftID.ToString()</td>
+                    <td>@item.modelName</td>
+                    <td>@item.noOfEconSeats.ToString()</td>
+                    <td>@item.noOfBusiSeats.ToString()</td>
+                    <td>@item.lastMaintain.ToString()</td>
+                    <td>@item.Status</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="dropbtn">Actions</button>
+                            <div class="dropdown-content">
+                                <a class="btn btn--stripe" asp-action="EditAircraft" asp-controller="AdminActions"
+                                   asp-route-id="@item.AircraftID">Edit</a>
+                                <a class="btn btn--stripe" asp-action="ViewAircraftFlightDetails" asp-controller="AdminActions"
+                                   asp-route-id="@item.AircraftID">Details</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
+                        @*<a class="btn btn--stripe" asp-action="Edit" asp-controller="Aircraft"
+                           asp-route-id="@item.AircraftID">Edit</a>
+                        <a class="btn btn--stripe" asp-action="Details" asp-controller="Aircraft"
+                           asp-route-id="@item.AircraftID">Details</a>*@
+
+                    </td>
+
+                </tr>
+
+            }
+
+        </table>
+    </div>
+
+}
+else
+{
+    <span style="color:red">No record Found</span>
+}

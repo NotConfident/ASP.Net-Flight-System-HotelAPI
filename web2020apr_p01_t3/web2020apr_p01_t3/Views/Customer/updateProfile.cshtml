@@ -1,0 +1,134 @@
+﻿@model web2020apr_p01_t3.Models.CustomerModel
+
+@{
+    ViewData["Title"] = "Update Profile";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/css/profile.css")" rel="stylesheet" type="text/css" />
+}
+
+<body>
+    <div class="container-fluid">
+        <div class="password shadow p-3 rounded col-lg-8 col-11">
+            <form asp-action="updateProfile">
+                <fieldset>
+                    <div class="text-lg-center text-center">
+                        <h2>Update passowrd</h2>
+                    </div>
+                    <div class="input-group mb-3 mt-4 col-6">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Old password</span>
+                        </div>
+                        <input type="password"
+                               id="old_password"
+                               class="form-control"
+                               aria-label="Default"
+                               aria-describedby="inputGroup-sizing-default"/>
+                    </div>
+
+                    <div class="input-group mb-3 col-6">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">New password</span>
+                        </div>
+                        <input type="password"
+                               id="new_password"
+                               class="form-control"
+                               aria-label="Default"
+                               aria-describedby="inputGroup-sizing-default"
+                               required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                               title="Must contain at lesat one number and one uppercase and lowercse letter, and at lest 8 or more characters"/>
+                    </div>
+
+                    <div class="input-group mb-3 col-6">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Confirm password</span>
+                        </div>
+                        <input asp-for="Password"
+                               type="password"
+                               id="cfm_password"
+                               class="form-control"
+                               aria-label="Default"
+                               aria-describedby="inputGroup-sizing-default" 
+                               required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                               title="Must contain at lesat one number and one uppercase and lowercse letter, and at lest 8 or more characters"
+                               />
+                    </div>
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </fieldset>
+            </form>
+        </div>
+
+
+        <script>
+            var password = document.getElementById("new_password")
+                , confirm_password = document.getElementById("cfm_password")
+                , old_password = document.getElementById("old_password");
+
+            function validatePassword() {
+
+                if (old_password != "1234") {
+                    confirm_password.setCustomValidity("Invalid password");
+                }
+
+                    if(password.value != confirm_password.value) {
+                        confirm_password.setCustomValidity("Passwords Don't Match");
+                    }
+                    else {
+                        confirm_password.setCustomValidity('');
+                    }
+                    }
+
+                    password.onchange = validatePassword;
+                    confirm_password.onkeyup = validatePassword;
+
+        </script>
+
+
+</body>
+
+
+@*<hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="updateProfile">
+                <div class="form-group">
+                    <label asp-for="id" class="control-label"></label>
+                    <input asp-for="Password" readonly class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" readonly class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="cEmail" class="control-label"></label>
+                    <input asp-for="cEmail" readonly class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="cDOB" class="control-label"></label>
+                    <input asp-for="cDOB" readonly class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Nationality" class="control-label"></label>
+                    <input asp-for="Nationality" readonly class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="cTeleNo" class="control-label"></label>
+                    <input asp-for="cTeleNo" readonly class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                           title="Must contain at lesat one number and one uppercase and lowercse letter, and at lest 8 or more characters"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>*@
+
+<div>
+    <a asp-action="profile">Back to List</a>
+</div>
+

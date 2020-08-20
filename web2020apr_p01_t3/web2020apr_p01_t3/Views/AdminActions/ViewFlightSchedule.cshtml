@@ -1,0 +1,94 @@
+﻿@model IEnumerable<web2020apr_p01_t3.Models.FlightScheduleViewModel>
+<link rel="stylesheet" href="~/css/table.css" />
+
+@if (TempData["CreateScheduleSuccess"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <strong>@TempData["CreateScheduleSuccess"]</strong>
+    </div>
+}
+@if (TempData["EditScheduleSuccess"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <strong>@TempData["EditScheduleSuccess"]</strong>
+    </div>
+}
+
+@if (TempData["DeleteScheduleSuccess"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <strong>@TempData["DeleteScheduleSuccess"]</strong>
+    </div>
+}
+@if (TempData["DeleteScheduleFail"] != null)
+{
+    <div class="alert alert-danger alert-dismissable">
+        <strong>@TempData["DeleteScheduleFail"]</strong>
+    </div>
+}
+@if (TempData["UpdateScheduleBookingSuccess"] != null)
+{
+    <div class="alert alert-success alert-dismissable">
+        <strong>@TempData["UpdateScheduleBookingSuccess"]</strong>
+    </div>
+}
+<!--p><a asp-action="CreateFlightSchedule">Create New Flight Schedule</a></p-->
+
+@if (Model.ToList().Count > 0)
+{
+    <div class="table-responsive" id="table-padding">
+        <table id="viewStaff" class="rwd-table table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Schedule ID</th>
+                    <th>Flight Number</th>
+                    <th>Route ID</th>
+                    <th>Departure / Arrival</th>
+                    <th>Departure Date and Time</th>
+                    <th>Arrival Date and Time</th>
+                    <th>Price (Eco / Business)</th>
+                    <th>Duration</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ScheduleID.ToString()</td>
+                        <td>@item.FlightNumber.ToString()</td>
+                        <td>@item.RouteID</td>
+                        <td>@item.DepartureCountry.ToString(), @item.DepartureCity.ToString() / @item.ArrivalCountry.ToString(), @item.ArrivalCity.ToString()</td>
+                        @if (item.DepartureDateTime == null)
+                        {
+                            <td><i>NULL</i></td>
+                            <td><i>NULL</i></td>
+                        }
+                        else
+                        {
+                            <td>@Html.DisplayFor(x => item.DepartureDateTime)</td>
+                            <td>@Html.DisplayFor(x => item.ArrivalDateTime)</td>
+
+                        }
+                        <td>$@Html.DisplayFor(x => item.PriceEco) / $@Html.DisplayFor(x => item.PriceBusiness)</td>
+                        <td>@item.FlightDuration </td>
+                        <td>
+                            <a asp-action="ViewScheduleBooking" asp-controller="AdminActions" asp-route-scheduleID="@item.ScheduleID">View</a> |
+                            <a asp-action="AssignPersonnel" asp-controller="AdminActions">Assign</a>
+                            <!--< a asp-action="EditFlightSchedule" asp-controller="AdminActions" asp-route-id="item.ScheduleID">Edit</a>
+                            <a asp-action="DeleteSchedule" asp-controller="AdminActions" asp-route-id="item.ScheduleID">Delete</a>-->
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-success alert-dismissable">
+        <strong>No records found!</strong>
+    </div>
+}
+
+

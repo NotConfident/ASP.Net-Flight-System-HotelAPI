@@ -1,0 +1,68 @@
+﻿@model IEnumerable<web2020apr_p01_t3.Models.ScheduleModel>
+
+
+
+@*@section Styles {
+    <link href="@Url.Content("~/css/profile.css")" rel="stylesheet" type="text/css" />
+
+}*@
+
+<div class="container-fluid">
+    <div class="search shadow-lg p-3 mb-5 rounded col-8 col-lg-10">
+        <form method="post" action="~/Home/Index">
+            <fieldset>
+                <div class="row">
+                    <div class="col-4 form-group">
+                        <label for="dCity">Flying from:</label>
+                        <input type="text" placeholder="City" name="dCity" id="dCity" required class="form-control">
+                    </div>
+                    <div class="col-4 form-group">
+                        <label for="aCity">Flying to:</label>
+                        <input type="text" placeholder="City" class="form-control" name="aCity" id="aCity" required>
+                    </div>
+                    <div class="col mt-4 text-right">
+
+                        <button type="submit" id="btnfilter" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        @if (Model.ToList() != null)
+        {
+            <table id="viewSchedule" class="table table-striped table-bordered ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Schedule ID</th>
+                        <th>Flight Number</th>
+                        <th>Route ID</th>
+                        <th>Aircraft ID</th>
+                        <th>Departure Date & Time</th>
+                        <th>Arrival Date & Time</th>
+                        <th>Economy Class Price</th>
+                        <th>Business Class Price</th>
+                        <th>status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (item.departDateTime > DateTime.Today.AddDays(1) && item.status == "Opened")
+                        {
+                            <tr>
+                                <td>@item.scheduleID</td>
+                                <td>@item.flightNum</td>
+                                <td>@item.routeID</td>
+                                <td>@item.aircraftID</td>
+                                <td>@item.departDateTime</td>
+                                <td>@item.arrivalDateTime</td>
+                                <td>@item.eClass</td>
+                                <td>@item.bClass</td>
+                                <td>@item.status</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

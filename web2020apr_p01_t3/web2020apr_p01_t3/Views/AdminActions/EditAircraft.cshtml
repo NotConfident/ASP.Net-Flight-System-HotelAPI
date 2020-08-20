@@ -1,0 +1,117 @@
+﻿@model web2020apr_p01_t3.Models.Aircraft
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link rel="stylesheet" href="~/css/schedulebookingmain.css" />
+
+
+<h4 class="PageTitle">Edit Aircraft's Status</h4>
+
+@if (ViewData["Error"] != null)
+{
+
+    <div class="red" style="color:red;">
+        <p><strong>Error:</strong> @ViewData["Error"].ToString()</p>
+        <script>alert("Error changing status")</script>
+    </div>
+}
+@*@if (ViewData["Success"] != null)
+    {
+        <div class="green">
+            <p><strong>Success:</strong> @TempData["Success"].ToString()</p>
+            <script>alert("Status Successfully changed!"</script>
+        </div>
+
+    }*@
+
+<hr />
+<form asp-action="EditAircraft">
+    <fieldset class="FormContent">
+        <div class="form-group row">
+            <label asp-for="AircraftID" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="AircraftID" readonly class="form-control-plaintext" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="modelName" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="modelName" readonly class="form-control-plaintext" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="noOfEconSeats" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="noOfEconSeats" readonly class="form-control-plaintext" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="noOfBusiSeats" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="noOfBusiSeats" readonly class="form-control-plaintext" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="lastMaintain" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                <input asp-for="lastMaintain" readonly class="form-control-plaintext" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Status" id="status" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 col-md-5">
+                @*@{
+
+                        @if (ViewBag.status == "Operational")
+                        {
+                            <select asp-for="Status">
+                                <option value="Operational" selected="selected" disabled>Operational</option>
+                                <option value="Under maintenance"> Under Maintenance</option>
+                            </select>
+                        }
+                        else if ( ViewBag.status == "Under Maintenance")
+                        {
+                            <select asp-for="Status">
+                                <option value="Under Maintenance" selected="selected" disabled>Under Maintenance</option>
+                                <option value="Operational">Operational</option>
+                            </select>
+                        }
+
+                    }*@
+                @if (ViewBag.status == "Operational")
+                {
+                    <input name="Status" type="radio" value="Operational" checked="checked" />
+                    <label for="Operational">Operational</label>
+                    <input name="Status" type="radio" value="Under Maintenance" />
+                    <label for="Under Maintenance">Under Maintenance</label>
+                }
+                else
+                {
+                    <input name="Status" type="radio" value="Operational" />
+                    <label for="Operational">Operational</label>
+                    <input name="Status" type="radio" value="Under Maintenance" checked="checked" />
+                    <label for="Under Maintenance">Under Maintenance</label>
+
+                }
+
+
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-9 offset-sm-3">
+
+                <input type="submit" value="Save"
+                       class="btn btn-primary" />
+
+            </div>
+        </div>
+
+        <div>
+            <a style="color:black; border-style:solid; border-radius:5px; padding:10px;" asp-controller="AdminActions" asp-action="ViewAircraft">Back to List</a>
+
+        </div>
+    </fieldset>
+</form>

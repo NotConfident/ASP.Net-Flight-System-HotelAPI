@@ -1,0 +1,21 @@
+﻿@model IEnumerable<web2020apr_p01_t3.Models.Personnel>
+<link rel="stylesheet" type="text/css" href="~/css/table.css">
+
+@{
+    ViewData["Title"] = "View Personnel";
+}
+
+<h1><center>View Personnel</center></h1>
+@if (Context.Session.GetString("Role") == "Administrator")
+{
+    <partial name="~/Views/AdminActions/ViewPersonnel.cshtml" model="@Model" />
+}
+else
+{
+    <partial name="~/Views/Home/Index.cshtml" model="@Model" />
+
+}
+<script type="text/javascript">
+function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };</script>
